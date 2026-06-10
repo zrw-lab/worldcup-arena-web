@@ -529,6 +529,9 @@
  }
 };
 
+  var X2 = { '主胜': 'H', '平': 'D', '客胜': 'A' };
+  var OU = { '大': 'O', '小': 'U' };
+  var BT = { '是': 'Y', '否': 'N' };
   function hc(v){ v = '' + v; if (v.charAt(0) === '主') return 'H'; if (v.charAt(0) === '客') return 'A'; return 'P'; }
   function oe(v){ return ('' + v).charAt(0) === '单' ? 'ODD' : 'EVN'; }
   function htf(v){ var m = { '主': 'H', '平': 'D', '客': 'A' }; return ('' + v).split('-').map(function (s) { return m[s.trim()] || 'D'; }).join('-'); }
