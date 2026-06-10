@@ -729,3 +729,9 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 
 /* 板块之间不要分割线：去掉 styles.css 给 .wc-section 的蓝 border-bottom(#2196F3 实测)+ border-top */
 .wc-section { border-top: 0 !important; border-bottom: 0 !important; }
+
+
+/* 竞猜卡表格固定列宽——多张竞猜卡上下列对齐(原 table-layout:auto 列随内容变、对不齐) */
+.wc-amc-tbl { table-layout: fixed; min-width: 760px; }
+.wc-amc-tbl th.mk, .wc-amc-tbl td.mk { width: 172px; white-space: normal; }
+.wc-amc-tbl th.ac, .wc-amc-tbl td.ac { width: 84px; }
