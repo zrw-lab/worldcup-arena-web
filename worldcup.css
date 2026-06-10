@@ -688,3 +688,11 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
   .wc-lbc, .wc-poolc { border-bottom: 1px solid var(--wc-line); }
   .wc-lbc:nth-child(2n), .wc-poolc:nth-child(2n) { border-right: 0; }
 }
+
+
+/* ===== 实际结果列 / 卡（与预测对照，2026-06-11 加）===== */
+.wc-amc-tbl th.ac, .wc-gp-tbl th.ac { color:#ffd166; font-weight:700; }
+.wc-amc-tbl td.ac, .wc-gp-tbl td.ac { background:rgba(255,209,102,.05); box-shadow:inset -1px 0 0 rgba(255,209,102,.20); }
+.wc-poolc.wc-poolc-real { border:1px solid rgba(255,209,102,.40); background:rgba(255,209,102,.04); }
+.wc-poolc-real .wc-poolc-name { color:#ffd166; }
+.pk.pk-dim { opacity:.55; }

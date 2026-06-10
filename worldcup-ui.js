@@ -603,11 +603,21 @@
         "<div class='wc-poolc-row'><span class='k'>" + (en ? "Total goals +" + gpts(A,"goals") : "总进球 +" + gpts(A,"goals")) + "</span><span class='v'>" + chip(A, "goals", p.goals, en, goalsSettled, p.goals === actualGoals) + "</span></div>" +
       "</div>";
     }).join("");
+    var TBD = "<span class='pk pk-dim'>" + (en ? "TBD" : "待定") + "</span>";
+    var tt = function (t) { return teamTag(A, t, en, false, false); };
+    var actualCard = "<div class='wc-poolc wc-poolc-real'>" +
+      "<div class='wc-poolc-name'>" + (en ? "ACTUAL" : "实际结果") + "</div>" +
+      "<div class='wc-poolc-row'><span class='k'>" + (en ? "Champion" : "夺冠") + "</span><span class='v'>" + (A.CHAMPION ? tt(A.CHAMPION) : TBD) + "</span></div>" +
+      "<div class='wc-poolc-row'><span class='k'>" + (en ? "Finalists" : "进决赛") + "</span><span class='v wrap'>" + ((A.FINALISTS || []).length ? A.FINALISTS.map(tt).join("") : TBD) + "</span></div>" +
+      "<div class='wc-poolc-row'><span class='k'>" + (en ? "Semis" : "四强") + "</span><span class='v wrap'>" + ((A.SEMIS || []).length ? A.SEMIS.map(tt).join("") : TBD) + "</span></div>" +
+      "<div class='wc-poolc-row'><span class='k'>" + (en ? "Region" : "夺冠大洲") + "</span><span class='v'>" + (A.WINNER_CONF ? chip(A, "conf", A.WINNER_CONF, en, false, false) : TBD) + "</span></div>" +
+      "<div class='wc-poolc-row'><span class='k'>" + (en ? "Total goals" : "总进球") + "</span><span class='v'>" + (A.TOTAL_GOALS != null ? chip(A, "goals", (A.TOTAL_GOALS > A.GOALS_LINE ? "O" : "U"), en, false, false) : TBD) + "</span></div>" +
+    "</div>";
     host.innerHTML =
       "<div class='wc-pool-head'><div><span class='wc-pool-ttl'>" + (en ? "Outright pool" : "全局彩池") + "</span>" +
         "<span class='wc-pool-sub'>" + (en ? "Total-goals line " + A.GOALS_LINE : "总进球盘口 " + A.GOALS_LINE) + "</span></div>" +
         "<span class='wc-lock'>" + (en ? "Locked pre-tournament · settles after" : "🔒 开赛前锁定 · 赛后开奖") + "</span></div>" +
-      "<div class='wc-pool-grid'>" + cards + "</div>";
+      "<div class='wc-pool-grid'>" + actualCard + cards + "</div>";
   }
 
   /* ---- group winners pool (12 groups × 6 models) ---- */
@@ -615,6 +625,7 @@
     var host = el("wc-grouppool"); if (!host) return;
     var G = WC.groups(), gw = A.GROUP_WINNERS || {}, keys = Object.keys(G).sort();
     var head = "<thead><tr><th class='gx'>" + (en ? "Group" : "小组") + "</th>" +
+      "<th class='ac'>" + (en ? "Actual" : "实际") + "</th>" +
       A.MODELS.map(function (m) { return "<th>" + m.name + "</th>"; }).join("") + "</tr></thead>";
     var body = keys.map(function (g) {
       var settled = !!gw[g];
@@ -624,7 +635,9 @@
         var why = A.GW_REASON ? A.GW_REASON(mi, g) : "";
         return "<td" + (why ? " title=\"" + why.replace(/"/g, "&quot;") + "\"" : "") + ">" + teamTag(A, t, en, settled, hit) + "</td>";
       }).join("");
-      return "<tr><td class='gx'>" + (en ? "Group " + g : g + " 组") + "</td>" + cells + "</tr>";
+      var acTd = settled ? "<td class='ac'>" + teamTag(A, gw[g], en, false, false) + "</td>"
+                         : "<td class='ac'><span class='pk pk-dim'>" + (en ? "TBD" : "待定") + "</span></td>";
+      return "<tr><td class='gx'>" + (en ? "Group " + g : g + " 组") + "</td>" + acTd + cells + "</tr>";
     }).join("");
     host.innerHTML = "<table class='wc-gp-tbl'>" + head + "<tbody>" + body + "</tbody></table>";
   }
@@ -676,6 +689,7 @@
         "<span>" + (en ? "Predictions are published day by day — this match opens on " + WC.DATE_EN[f[0]] + "." : "预测逐日产出，本场将在比赛日（" + WC.DATE_ZH[f[0]] + "）当天公布。") + "</span></div>";
     }
     var thead = "<thead><tr><th class='mk'>" + (en ? "Market" : "市场") + "</th>" +
+      "<th class='ac'>" + (en ? "Actual" : "实际") + "</th>" +
       MODELS.map(function (m) { return "<th>" + m.name + "</th>"; }).join("") + "</tr></thead>";
     var rows = A.MARKETS.map(function (mk) {
       var lab = mk.key === "hc" ? hcLabel(A, line, en) : (en ? mk.en : mk.zh);
@@ -685,7 +699,9 @@
         var pr = A.predict(f[2], f[3], mi, i);
         return "<td>" + chip(A, mk.key, pr[mk.key], en, settled, settled && pr[mk.key] === aval) + "</td>";
       }).join("");
-      return "<tr><td class='mk'><b>" + lab + "</b><span class='pt'>+" + mk.pts + "</span></td>" + cells + "</tr>";
+      var acHtml = settled ? "<td class='ac'>" + chip(A, mk.key, aval, en, false, false) + "</td>"
+                           : "<td class='ac'><span class='pk pk-dim'>" + (en ? "TBD" : "待定") + "</span></td>";
+      return "<tr><td class='mk'><b>" + lab + "</b><span class='pt'>+" + mk.pts + "</span></td>" + acHtml + cells + "</tr>";
     }).join("");
     return head + "<div class='wc-amc-scroll'><table class='wc-amc-tbl'>" + thead + "<tbody>" + rows + "</tbody></table></div>";
   }
