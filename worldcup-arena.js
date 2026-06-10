@@ -15,13 +15,13 @@
   ];
 
   var MARKETS = [
-    { key: "x2", zh: "胜平负", en: "1X2", pts: 1 },
-    { key: "hc", zh: "让球", en: "Handicap", pts: 2 },
-    { key: "ou", zh: "大小 2.5", en: "O/U 2.5", pts: 1 },
-    { key: "bt", zh: "双方进球", en: "BTTS", pts: 1 },
+    { key: "x2", zh: "胜平负", en: "1X2", pts: 2 },
+    { key: "hc", zh: "让球", en: "Handicap", pts: 4 },
+    { key: "ou", zh: "大小 2.5", en: "O/U 2.5", pts: 2 },
+    { key: "bt", zh: "双方进球", en: "BTTS", pts: 2 },
     { key: "oe", zh: "进球单双", en: "Odd / Even", pts: 1 },
     { key: "ht", zh: "半全场", en: "HT / FT", pts: 3 },
-    { key: "cs", zh: "正确比分", en: "Correct score", pts: 5 }
+    { key: "cs", zh: "正确比分", en: "Correct score", pts: 2 }
   ];
   var GLOBAL = [
     { key: "champ", zh: "夺冠", en: "Champion", pts: 25, kind: "one" },

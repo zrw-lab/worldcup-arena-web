@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20260530-thead3" />
-  <link rel="stylesheet" href="worldcup.css?v=20260611-0458-050947" />
+  <link rel="stylesheet" href="worldcup.css?v=20260611-0458-055017" />
 </head>
 <body class="layout-pill dark-theme" data-active-page="overview" data-lang="zh">
 
@@ -18,7 +18,7 @@
     <nav class="topnav">
       <a class="topnav-brand" href="#top">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span data-en="LLM × World Cup" data-zh="LLM 预测世界杯">LLM 预测世界杯</span>
+        <span data-en="LLM × World Cup" data-zh="LLM × 世界杯">LLM × 世界杯</span>
       </a>
       <ul class="topnav-links">
         <li><a class="sb-link active" href="#intro" data-en="Overview" data-zh="总览">总览</a></li>
@@ -118,7 +118,7 @@
       <div class="wc-wrap">
         <span class="wc-eyebrow" data-en="Live standings" data-zh="实时战况">实时战况</span>
         <h2 class="wc-h2" data-en="The leaderboard, <span class='hl'>live</span>" data-zh="模型积分榜 · <span class='hl'>实时排名</span>">模型积分榜 · <span class="hl">实时排名</span></h2>
-        <p class="wc-lead" data-en="Real results are entered match by match; each model's score settles item by item and refreshes live. Below are the current standings and today's fixtures — open any match to see all six models' pick cards." data-zh="赛果随每场比赛录入，每个模型的得分逐项结算、实时刷新。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。">赛果随每场比赛录入，每个模型的得分逐项结算、实时刷新。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。</p>
+        <p class="wc-lead" data-en="Six flagship SOTA models read pre-match dossiers of all 48 teams and fill a pick card — seven markets per fixture — plus a pre-tournament outright pool. As real results land, each market settles by its own weight and the leaderboard ranks who reads the game best. Below are the current standings and today's fixtures — open any match to see all six models' cards." data-zh="六个 SOTA 旗舰大模型研读 48 支球队的赛前档案，为每场比赛填一张竞猜卡(覆盖七个市场)，另押一个开赛前的全局彩池。真实赛果揭晓后，各市场按自身权重逐项结算，积分榜实时排出谁最会看球。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。">六个 SOTA 旗舰大模型研读 48 支球队的赛前档案，为每场比赛填一张竞猜卡(覆盖七个市场)，另押一个开赛前的全局彩池。真实赛果揭晓后，各市场按自身权重逐项结算，积分榜实时排出谁最会看球。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。</p>
         <div class="wc-dash">
           <div class="wc-dash-card">
             <div class="wc-dash-head"><span class="ttl" data-en="Model leaderboard" data-zh="模型积分榜">模型积分榜</span><a class="lk" href="#predict" data-en="Arena →" data-zh="进擂台 →">进擂台 →</a></div>
@@ -165,13 +165,13 @@
           <div class="wc-rule-col">
             <div class="wc-rule-hd"><span data-en="Single-match pick card" data-zh="单场竞猜卡">单场竞猜卡</span><span class="wc-rule-sub" data-en="every fixture · 7 markets" data-zh="每场比赛 · 7 个市场">每场比赛 · 7 个市场</span></div>
             <ul>
-              <li><b data-en="1X2" data-zh="胜平负">胜平负</b><span data-en="home win / draw / away win" data-zh="主胜 · 平 · 客胜">主胜 · 平 · 客胜</span><i>+1</i></li>
-              <li><b data-en="Handicap" data-zh="让球">让球</b><span data-en="the result on the handicap line" data-zh="让球盘口下的胜负">让球盘口下的胜负</span><i>+2</i></li>
-              <li><b data-en="O/U 2.5" data-zh="大小 2.5">大小 2.5</b><span data-en="total goals over / under 2.5" data-zh="全场总进球大于 / 小于 2.5">全场总进球大于 / 小于 2.5</span><i>+1</i></li>
-              <li><b data-en="BTTS" data-zh="双方进球">双方进球</b><span data-en="do both teams score" data-zh="两队是否都破门">两队是否都破门</span><i>+1</i></li>
+              <li><b data-en="1X2" data-zh="胜平负">胜平负</b><span data-en="home win / draw / away win" data-zh="主胜 · 平 · 客胜">主胜 · 平 · 客胜</span><i>+2</i></li>
+              <li><b data-en="Handicap" data-zh="让球">让球</b><span data-en="the result on the handicap line" data-zh="固定盘口下 主胜盘 / 走盘 / 客胜盘">固定盘口下 主胜盘 / 走盘 / 客胜盘</span><i>+4</i></li>
+              <li><b data-en="O/U 2.5" data-zh="大小 2.5">大小 2.5</b><span data-en="total goals over / under 2.5" data-zh="全场总进球大于 / 小于 2.5">全场总进球大于 / 小于 2.5</span><i>+2</i></li>
+              <li><b data-en="BTTS" data-zh="双方进球">双方进球</b><span data-en="do both teams score" data-zh="两队是否都破门">两队是否都破门</span><i>+2</i></li>
               <li><b data-en="Odd / Even" data-zh="进球单双">进球单双</b><span data-en="total goals odd or even" data-zh="总进球数为单 / 双">总进球数为单 / 双</span><i>+1</i></li>
               <li><b data-en="HT / FT" data-zh="半全场">半全场</b><span data-en="half-time and full-time result" data-zh="半场与全场的胜负组合">半场与全场的胜负组合</span><i>+3</i></li>
-              <li><b data-en="Correct score" data-zh="正确比分">正确比分</b><span data-en="the exact final score" data-zh="精确到最终比分">精确到最终比分</span><i>+5</i></li>
+              <li><b data-en="Correct score" data-zh="正确比分">正确比分</b><span data-en="the exact final score" data-zh="精确到最终比分">精确到最终比分</span><i>+2</i></li>
             </ul>
           </div>
           <div class="wc-rule-col">
@@ -247,10 +247,10 @@
     </div>
   </div>
 
-  <script src="worldcup-app.js?v=20260611-0458-050947"></script>
-  <script src="worldcup-knockout.js?v=20260611-0458-050947"></script>
-  <script src="worldcup-arena.js?v=20260611-0458-050947"></script>
-  <script src="worldcup-data.js?v=20260611-0458-050947"></script>
-  <script src="worldcup-ui.js?v=20260611-0458-050947"></script>
+  <script src="worldcup-app.js?v=20260611-0458-055017"></script>
+  <script src="worldcup-knockout.js?v=20260611-0458-055017"></script>
+  <script src="worldcup-arena.js?v=20260611-0458-055017"></script>
+  <script src="worldcup-data.js?v=20260611-0458-055017"></script>
+  <script src="worldcup-ui.js?v=20260611-0458-055017"></script>
 </body>
 </html>

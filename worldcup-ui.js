@@ -556,8 +556,8 @@
       ? "<div class='wc-dc-pager'>" + idxs.map(function (i, p) { var f = WC.FIX[i]; return "<button type='button' class='wc-dc-pg" + (p === dashPage ? " on" : "") + "' data-pg='" + p + "'><b>" + (p + 1) + "</b><span>" + WC.flag(f[2]) + "-" + WC.flag(f[3]) + "</span></button>"; }).join("") + "</div>"
       : "<span class='wc-dc-cnt'>" + idxs.length + (en ? " matches" : " 场比赛") + "</span>";
     var modes = "<div class='wc-dc-modes'>" +
-      "<button type='button' class='wc-dc-mode" + (dashPaged ? " on" : "") + "' data-mode='page'>" + (en ? "Paginate" : "翻页") + "</button>" +
-      "<button type='button' class='wc-dc-mode" + (dashPaged ? "" : " on") + "' data-mode='all'>" + (en ? "Show all" : "全部列出") + "</button></div>";
+      "<button type='button' class='wc-dc-mode" + (dashPaged ? " on" : "") + "' data-mode='page'>" + (en ? "Paged" : "逐场") + "</button>" +
+      "<button type='button' class='wc-dc-mode" + (dashPaged ? "" : " on") + "' data-mode='all'>" + (en ? "All" : "全部") + "</button></div>";
     var pick = dashPaged
       ? "<div class='wc-dash-pickcard'>" + pickCardHTML(A, en, idxs[dashPage], arenaResults()) + "</div>"
       : idxs.map(function (i) { return "<div class='wc-dash-pickcard'>" + pickCardHTML(A, en, i, arenaResults()) + "</div>"; }).join("");
@@ -702,7 +702,7 @@
           "<span><b>" + (en ? "Home" : "主") + "</b> " + WC.flag(f[2]) + " " + WC.nm(f[2]) + "</span>" +
           "<span><b>" + (en ? "Away" : "客") + "</b> " + WC.flag(f[3]) + " " + WC.nm(f[3]) + "</span>" +
           "<span><b>" + (en ? "Venue" : "场地") + "</b> " + (en ? f[5] : f[4]) + "</span>" +
-          "<span><b>" + (en ? "Kickoff" : "开球") + "</b> " + f[6] + (en ? " ET" : " 美东") + "</span>" +
+          "<span><b>" + (en ? "Kickoff" : "开球") + "</b> " + f[6] + (en ? " ET" : " 美东 / " + etToBJ(f[6]).time + " 北京") + "</span>" +
         "</div>" +
       "</div>";
     if (!isRevealed(i)) {
