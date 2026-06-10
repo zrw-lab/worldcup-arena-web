@@ -48,7 +48,9 @@
   function sgn(d) { return d > 0 ? "H" : (d < 0 ? "A" : "D"); }
 
   /* 让球线：给主队的让球数（主队被看好为负）。0=平手盘 */
+  var HCP = { "MEX_vs_RSA": -1, "KOR_vs_CZE": -0.5 };   // 固定真实盘口(主队让球数,负=主让;多方赔率核对)
   function handLine(home, away) {
+    var k = home + "_vs_" + away; if (HCP[k] != null) return HCP[k];
     var WC = window.__WC, d = WC.rate(home) - WC.rate(away), ad = Math.abs(d);
     var line = ad >= 320 ? 2 : ad >= 150 ? 1 : ad >= 45 ? 0.5 : 0;
     return d > 0 ? -line : line;

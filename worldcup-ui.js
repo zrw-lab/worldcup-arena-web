@@ -553,16 +553,17 @@
     var host = el("wc-dash-card-body"); if (!host) return;
     if (dashPage >= idxs.length) dashPage = 0;
     var pager = (dashPaged && idxs.length > 1)
-      ? "<div class='wc-dc-pager'>" + idxs.map(function (i, p) { return "<button type='button' class='wc-dc-pg" + (p === dashPage ? " on" : "") + "' data-pg='" + p + "'>" + (p + 1) + "</button>"; }).join("") + "</div>"
+      ? "<div class='wc-dc-pager'>" + idxs.map(function (i, p) { var f = WC.FIX[i]; return "<button type='button' class='wc-dc-pg" + (p === dashPage ? " on" : "") + "' data-pg='" + p + "'><b>" + (p + 1) + "</b><span>" + WC.flag(f[2]) + "-" + WC.flag(f[3]) + "</span></button>"; }).join("") + "</div>"
       : "<span class='wc-dc-cnt'>" + idxs.length + (en ? " matches" : " 场比赛") + "</span>";
-    var toggle = "<button type='button' class='wc-dc-toggle' data-act='toggle'>" + (dashPaged ? (en ? "Show all" : "全部列出") : (en ? "Paginate" : "翻页查看")) + "</button>";
+    var modes = "<div class='wc-dc-modes'>" +
+      "<button type='button' class='wc-dc-mode" + (dashPaged ? " on" : "") + "' data-mode='page'>" + (en ? "Paginate" : "翻页") + "</button>" +
+      "<button type='button' class='wc-dc-mode" + (dashPaged ? "" : " on") + "' data-mode='all'>" + (en ? "Show all" : "全部列出") + "</button></div>";
     var pick = dashPaged
       ? "<div class='wc-dash-pickcard'>" + pickCardHTML(A, en, idxs[dashPage], arenaResults()) + "</div>"
       : idxs.map(function (i) { return "<div class='wc-dash-pickcard'>" + pickCardHTML(A, en, i, arenaResults()) + "</div>"; }).join("");
-    host.innerHTML = "<div class='wc-dc-bar'>" + pager + toggle + "</div>" + pick;
+    host.innerHTML = "<div class='wc-dc-bar'>" + pager + modes + "</div>" + pick;
     host.querySelectorAll("[data-pg]").forEach(function (b) { b.addEventListener("click", function () { dashPage = +b.getAttribute("data-pg"); renderDashCards(A, en, idxs); }); });
-    var tg = host.querySelector("[data-act='toggle']");
-    if (tg) tg.addEventListener("click", function () { dashPaged = !dashPaged; dashPage = 0; renderDashCards(A, en, idxs); });
+    host.querySelectorAll("[data-mode]").forEach(function (b) { b.addEventListener("click", function () { dashPaged = (b.getAttribute("data-mode") === "page"); dashPage = 0; renderDashCards(A, en, idxs); }); });
   }
 
   function renderArena() {
@@ -700,6 +701,8 @@
         "<div class='wc-amc-legend'>" +
           "<span><b>" + (en ? "Home" : "主") + "</b> " + WC.flag(f[2]) + " " + WC.nm(f[2]) + "</span>" +
           "<span><b>" + (en ? "Away" : "客") + "</b> " + WC.flag(f[3]) + " " + WC.nm(f[3]) + "</span>" +
+          "<span><b>" + (en ? "Venue" : "场地") + "</b> " + (en ? f[5] : f[4]) + "</span>" +
+          "<span><b>" + (en ? "Kickoff" : "开球") + "</b> " + f[6] + (en ? " ET" : " 美东") + "</span>" +
         "</div>" +
       "</div>";
     if (!isRevealed(i)) {
