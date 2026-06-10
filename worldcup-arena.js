@@ -116,7 +116,7 @@
        逐日产出：每产出新一天，把这里改成那天即可（格式与赛程日期键一致，如 "6.12"）。
        例：当前只放出 6/11 揭幕日两场 → "6.11"
        ====================================================================== */
-    REVEAL_THROUGH: "6.13",
+    REVEAL_THROUGH: "6.11",
 
     /* ========================================================================
        赛后在这里更新真实结果 —— 页面自动结算并刷新积分榜。
@@ -127,7 +127,7 @@
                WINNER_CONF "UEFA"|"CONMEBOL" / TOTAL_GOALS 数字(对比 GOALS_LINE)
                GROUP_WINNERS { A:"Mexico", B:"...", ... }
        ====================================================================== */
-    RESULTS: {"0": "2:0/1:0", "1": "1:0/0:0"},
-    CHAMPION: "", FINALISTS: ["France", "Spain"], SEMIS: ["France", "Spain", "Argentina", "Brazil"], WINNER_CONF: "", TOTAL_GOALS: null, GROUP_WINNERS: {}
+    RESULTS: {},
+    CHAMPION: "", FINALISTS: [], SEMIS: [], WINNER_CONF: "", TOTAL_GOALS: null, GROUP_WINNERS: {}
   };
 })();

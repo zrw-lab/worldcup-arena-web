@@ -500,7 +500,7 @@
     var tHost = el("wc-dash-today"), tTtl = el("wc-dash-today-ttl");
     if (!tHost) return;
     var days = allDays();
-    var now = new Date(); var todayNum = 613; /* 临时测4场滚动,测好恢复为:(now.getFullYear()===2026?(now.getMonth()+1)*100+now.getDate():611) */
+    var now = new Date(); var todayNum = (now.getFullYear() === 2026 ? (now.getMonth() + 1) * 100 + now.getDate() : 611);
     var pickDay = null, isToday = false;
     for (var k = 0; k < days.length; k++) {
       var P = dateParts(days[k].dk); var num = P.mo * 100 + P.dd;
