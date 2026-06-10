@@ -433,8 +433,8 @@
   function chip(A, mkKey, val, en, settled, ok) {
     if (val == null) return "<span class='pk pk-neutral pk-dim'>—</span>";
     var label, tone;
-    if (mkKey === "cs") { label = val; tone = "neutral"; }
-    else if (mkKey === "ht") { var pp = val.split("-"); label = (en ? A.OUT[pp[0]].en : A.OUT[pp[0]].zh) + "/" + (en ? A.OUT[pp[1]].en : A.OUT[pp[1]].zh); tone = "neutral"; }
+    if (mkKey === "cs") { label = val; var ps = ("" + val).split(":"); tone = +ps[0] > +ps[1] ? "warm" : (+ps[0] < +ps[1] ? "cool" : "neutral"); }
+    else if (mkKey === "ht") { var pp = val.split("-"); label = (en ? A.OUT[pp[0]].en : A.OUT[pp[0]].zh) + "/" + (en ? A.OUT[pp[1]].en : A.OUT[pp[1]].zh); tone = pp[1] === "H" ? "warm" : (pp[1] === "A" ? "cool" : "neutral"); }
     else { var info = A.LBL[mkKey][val]; label = en ? info.en : info.zh; tone = info.t; }
     var cls = "pk pk-" + tone + (settled ? (ok ? " ok" : " no") : "");
     return "<span class='" + cls + "'>" + label + (settled ? "<i>" + (ok ? "✓" : "✗") + "</i>" : "") + "</span>";

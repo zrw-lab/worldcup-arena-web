@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20260530-thead3" />
-  <link rel="stylesheet" href="worldcup.css?v=20260611-0057-033542" />
+  <link rel="stylesheet" href="worldcup.css?v=20260611-0057-034640" />
 </head>
 <body class="layout-pill dark-theme" data-active-page="overview" data-lang="zh">
 
@@ -116,6 +116,9 @@
     <!-- ============================== OVERVIEW DASHBOARD ================ -->
     <section class="wc-section wc-reveal" id="dash">
       <div class="wc-wrap">
+        <span class="wc-eyebrow" data-en="Live standings" data-zh="实时战况">实时战况</span>
+        <h2 class="wc-h2" data-en="The leaderboard, <span class='hl'>live</span>" data-zh="模型积分榜 · <span class='hl'>实时排名</span>">模型积分榜 · <span class="hl">实时排名</span></h2>
+        <p class="wc-lead" data-en="Real results are entered match by match; each model's score settles item by item and refreshes live. Below are the current standings and today's fixtures — open any match to see all six models' pick cards." data-zh="赛果随每场比赛录入，每个模型的得分逐项结算、实时刷新。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。">赛果随每场比赛录入，每个模型的得分逐项结算、实时刷新。下方是当前积分榜与今日赛程——点开任意一场，即可查看六个模型的竞猜卡。</p>
         <div class="wc-dash">
           <div class="wc-dash-card">
             <div class="wc-dash-head"><span class="ttl" data-en="Model leaderboard" data-zh="模型积分榜">模型积分榜</span><a class="lk" href="#predict" data-en="Arena →" data-zh="进擂台 →">进擂台 →</a></div>
@@ -157,6 +160,33 @@
         <span class="wc-eyebrow" data-en="Model Arena" data-zh="模型擂台">模型擂台</span>
         <h2 class="wc-h2" data-en="Six models, <span class='hl'>one scoreboard</span>" data-zh="六个模型 <span class='hl'>同台竞技</span>">六个模型 <span class="hl">同台竞技</span></h2>
         <p class="wc-lead" data-en="Six flagship LLMs fill a pick card for every fixture across seven markets, plus a pre-tournament outright pool. As real results land, every correct call scores — the leaderboard ranks who reads the game best." data-zh="六个旗舰大模型给每场比赛填一张竞猜卡、覆盖七个市场，另有一个开赛前的全局彩池。真实赛果揭晓后，押中即得分，积分榜排出谁的预判最准。">六个旗舰大模型给每场比赛填一张竞猜卡、覆盖七个市场，另有一个开赛前的全局彩池。真实赛果揭晓后，押中即得分，积分榜排出谁的预判最准。</p>
+
+        <div class="wc-rules">
+          <div class="wc-rule-col">
+            <div class="wc-rule-hd"><span data-en="Single-match pick card" data-zh="单场竞猜卡">单场竞猜卡</span><span class="wc-rule-sub" data-en="every fixture · 7 markets" data-zh="每场比赛 · 7 个市场">每场比赛 · 7 个市场</span></div>
+            <ul>
+              <li><b data-en="1X2" data-zh="胜平负">胜平负</b><span data-en="home win / draw / away win" data-zh="主胜 · 平 · 客胜">主胜 · 平 · 客胜</span><i>+1</i></li>
+              <li><b data-en="Handicap" data-zh="让球">让球</b><span data-en="the result on the handicap line" data-zh="让球盘口下的胜负">让球盘口下的胜负</span><i>+2</i></li>
+              <li><b data-en="O/U 2.5" data-zh="大小 2.5">大小 2.5</b><span data-en="total goals over / under 2.5" data-zh="全场总进球大于 / 小于 2.5">全场总进球大于 / 小于 2.5</span><i>+1</i></li>
+              <li><b data-en="BTTS" data-zh="双方进球">双方进球</b><span data-en="do both teams score" data-zh="两队是否都破门">两队是否都破门</span><i>+1</i></li>
+              <li><b data-en="Odd / Even" data-zh="进球单双">进球单双</b><span data-en="total goals odd or even" data-zh="总进球数为单 / 双">总进球数为单 / 双</span><i>+1</i></li>
+              <li><b data-en="HT / FT" data-zh="半全场">半全场</b><span data-en="half-time and full-time result" data-zh="半场与全场的胜负组合">半场与全场的胜负组合</span><i>+3</i></li>
+              <li><b data-en="Correct score" data-zh="正确比分">正确比分</b><span data-en="the exact final score" data-zh="精确到最终比分">精确到最终比分</span><i>+5</i></li>
+            </ul>
+          </div>
+          <div class="wc-rule-col">
+            <div class="wc-rule-hd"><span data-en="Outright pool" data-zh="全局彩池">全局彩池</span><span class="wc-rule-sub" data-en="sealed before kickoff" data-zh="开赛前一次封盘">开赛前一次封盘</span></div>
+            <ul>
+              <li><b data-en="Champion" data-zh="夺冠">夺冠</b><span data-en="pick the winner" data-zh="押中最终冠军">押中最终冠军</span><i>+25</i></li>
+              <li><b data-en="Finalists" data-zh="进决赛">进决赛</b><span data-en="the 2 finalists · each" data-zh="两支决赛球队 · 每对">两支决赛球队 · 每对</span><i>+6</i></li>
+              <li><b data-en="Semi-finalists" data-zh="四强">四强</b><span data-en="the 4 semi-finalists · each" data-zh="四支半决赛球队 · 每对">四支半决赛球队 · 每对</span><i>+4</i></li>
+              <li><b data-en="Winning region" data-zh="夺冠大洲">夺冠大洲</b><span data-en="the champion's confederation" data-zh="冠军所属大洲">冠军所属大洲</span><i>+5</i></li>
+              <li><b data-en="Total goals" data-zh="总进球">总进球</b><span data-en="all 104 matches · over / under" data-zh="全届 104 场总进球 · 大 / 小">全届 104 场总进球 · 大 / 小</span><i>+4</i></li>
+              <li><b data-en="Group winners" data-zh="小组头名">小组头名</b><span data-en="a winner for each of 12 groups · each" data-zh="12 组各押一支头名 · 每对">12 组各押一支头名 · 每对</span><i>+2</i></li>
+            </ul>
+            <p class="wc-rule-note" data-en="All picks are locked before kickoff; as real results land they settle against this table and accumulate into the live leaderboard." data-zh="所有预测开赛前封盘，真实赛果揭晓后按此表逐项结算、累加成实时积分榜。">所有预测开赛前封盘，真实赛果揭晓后按此表逐项结算、累加成实时积分榜。</p>
+          </div>
+        </div>
 
         <div class="wc-lb" id="wc-lb"></div>
 
@@ -217,10 +247,10 @@
     </div>
   </div>
 
-  <script src="worldcup-app.js?v=20260611-0057-033542"></script>
-  <script src="worldcup-knockout.js?v=20260611-0057-033542"></script>
-  <script src="worldcup-arena.js?v=20260611-0057-033542"></script>
-  <script src="worldcup-data.js?v=20260611-0057-033542"></script>
-  <script src="worldcup-ui.js?v=20260611-0057-033542"></script>
+  <script src="worldcup-app.js?v=20260611-0057-034640"></script>
+  <script src="worldcup-knockout.js?v=20260611-0057-034640"></script>
+  <script src="worldcup-arena.js?v=20260611-0057-034640"></script>
+  <script src="worldcup-data.js?v=20260611-0057-034640"></script>
+  <script src="worldcup-ui.js?v=20260611-0057-034640"></script>
 </body>
 </html>
