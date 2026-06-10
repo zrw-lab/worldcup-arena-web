@@ -725,3 +725,7 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 .wc-dtoday::-webkit-scrollbar-track { background:transparent; }
 .wc-dtoday::-webkit-scrollbar-thumb { background:rgba(255,255,255,.16); border-radius:4px; }
 .wc-dtoday::-webkit-scrollbar-thumb:hover { background:rgba(255,255,255,.30); }
+
+
+/* 板块之间不要分割线：去掉 styles.css 给 .wc-section 的蓝 border-bottom(#2196F3 实测)+ border-top */
+.wc-section { border-top: 0 !important; border-bottom: 0 !important; }
