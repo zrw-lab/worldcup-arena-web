@@ -694,10 +694,18 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 .wc-amc-tbl th.ac, .wc-gp-tbl th.ac { color:#ffd166; font-weight:700; box-shadow:inset 1px 0 0 rgba(255,209,102,.3), inset -1px 0 0 rgba(255,209,102,.3); }
 .wc-amc-tbl td.ac, .wc-gp-tbl td.ac { box-shadow:inset 1px 0 0 rgba(255,209,102,.3), inset -1px 0 0 rgba(255,209,102,.3); }
 
-/* 去掉可滚动块被聚焦时浏览器默认的蓝色轮廓(滚动容器不是按钮，无需轮廓) */
-.wc-dtoday, .wc-fixturelist, .wc-amlist, .wc-timeline, [class*="-scroll"], #wc-grouppool { outline: none; }
-.wc-dtoday:focus, .wc-fixturelist:focus, .wc-amlist:focus, .wc-timeline:focus,
-[class*="-scroll"]:focus, [class*="-scroll"]:focus-visible, #wc-grouppool:focus { outline: none; }
+/* 覆盖主站 styles.css 的蓝色焦点：1525 全局 :focus-visible(3px var(--blue))+ 558 topnav 链接蓝边。
+   交互元素改主题红描边(保留键盘无障碍)；全宽容器/滚动块点击聚焦一律不描线 → 消除那条蓝线 */
+:focus-visible { outline-color: var(--wc-accent) !important; }
+section, main, header, .wc-section, .page-section, .topnav-wrap, .shell, .main-col,
+.wc-dtoday, .wc-fixturelist, .wc-amlist, .wc-timeline, [class*="-scroll"], #wc-grouppool, .wc-arena2,
+section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
+[class*="-scroll"]:focus, [class*="-scroll"]:focus-visible, #wc-grouppool:focus {
+  outline: none !important;
+}
+.topnav .topnav-links a.sb-link:focus, .topnav .topnav-links a.sb-link:focus-visible {
+  border-color: transparent !important; outline: none !important;
+}
 
 /* 赛果横条（全局彩池上方的对照基准，不挤模型网格）*/
 .wc-pool-actual { display:flex; flex-wrap:wrap; align-items:center; gap:8px 20px; margin:12px 0 4px; padding:12px 16px;

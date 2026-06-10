@@ -751,6 +751,8 @@
     function onScroll() {
       var y = window.scrollY + 130; var cur = ids[0];
       ids.forEach(function (id) { var s = document.getElementById(id); if (s && s.offsetTop <= y) cur = id; });
+      // 滚到页面底部时强制激活最后一个 section(about 太矮、否则永远够不到 scrollY+130 判定线 → 关于点了不亮)
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = ids[ids.length - 1];
       links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + cur); });
     }
     onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
