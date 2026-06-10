@@ -543,6 +543,14 @@
     var cardHost = el("wc-dash-card-body"); if (!cardHost) return;
     if (pickDay.type === "group") {
       var idxs = []; WC.FIX.forEach(function (f, i) { if (f[0] === pickDay.dk) idxs.push(i); });
+      var cmeta = el("wc-cards-meta");
+      if (cmeta) {
+        var tms = idxs.map(function (i) { return WC.FIX[i][6]; }).filter(Boolean);
+        var et = tms.length ? tms[0] + (tms.length > 1 ? "–" + tms[tms.length - 1] : "") : "";
+        var bj = tms.length ? etToBJ(tms[0]).time + (tms.length > 1 ? "–" + etToBJ(tms[tms.length - 1]).time : "") : "";
+        cmeta.textContent = en ? (WD_EN[wd] + " " + dp.mo + "/" + dp.dd + (et ? " · " + et + " ET" : ""))
+          : (dp.mo + "月" + dp.dd + "日 " + WD_ZH[wd] + (et ? " · " + et + " 美东 / " + bj + " 北京" : ""));
+      }
       renderDashCards(A, en, idxs);
     } else {
       cardHost.innerHTML = "<div class='wc-dtoday-empty'>" + (en ? "Knockout pairings are bracket slots — per-match cards open once teams are set." : "淘汰赛为占位对阵，球队确定后再开放单场卡。") + "</div>";

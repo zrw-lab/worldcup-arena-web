@@ -25,7 +25,7 @@
   ];
   var GLOBAL = [
     { key: "champ", zh: "夺冠", en: "Champion", pts: 25, kind: "one" },
-    { key: "final", zh: "进决赛", en: "Finalists", pts: 6, kind: "set", n: 2 },
+    { key: "final", zh: "进决赛", en: "Finalists", pts: 10, kind: "set", n: 2 },
     { key: "semi", zh: "四强", en: "Semi-finalists", pts: 4, kind: "set", n: 4 },
     { key: "conf", zh: "夺冠大洲", en: "Winning region", pts: 5, kind: "opt" },
     { key: "goals", zh: "总进球", en: "Total goals", pts: 4, kind: "opt" }

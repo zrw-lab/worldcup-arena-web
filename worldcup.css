@@ -775,3 +775,12 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 .wc-dc-mode { padding: 5px 13px; border: 0; border-radius: 999px; background: none; color: var(--wc-muted); font-family: var(--wc-body); font-weight: 600; font-size: 12.5px; cursor: pointer; white-space: nowrap; transition: color 120ms, background 120ms; }
 .wc-dc-mode:hover { color: var(--wc-text); }
 .wc-dc-mode.on { background: var(--wc-accent); color: #fff; }
+
+
+/* 全局彩池队名 = 模型的常规预测,给一抹柔和预测色(区别于结算 ✓绿/✗灰) */
+.tg { color: #cdd6f2; border-color: rgba(124,154,240,.34); background: rgba(124,154,240,.07); }
+.tg .fl { color: #aebbe6; }
+/* 全部竞猜卡与上方积分榜留出间距(原来贴太紧) */
+.wc-dash-card-wide { margin-top: 18px; }
+
+.wc-cards-meta { font-family: var(--wc-body); font-weight: 600; font-size: 12px; color: var(--wc-muted); margin-right: auto; padding-left: 10px; white-space: nowrap; }

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20260530-thead3" />
-  <link rel="stylesheet" href="worldcup.css?v=20260611-0458-055017" />
+  <link rel="stylesheet" href="worldcup.css?v=20260611-0458-064156" />
 </head>
 <body class="layout-pill dark-theme" data-active-page="overview" data-lang="zh">
 
@@ -130,7 +130,7 @@
           </div>
         </div>
         <div class="wc-dash-card wc-dash-card-wide">
-          <div class="wc-dash-head"><span class="ttl" data-en="Next match day · pick cards" data-zh="下一比赛日 · 全部竞猜卡">下一比赛日 · 全部竞猜卡</span><a class="lk" href="#predict" data-en="All cards →" data-zh="全部竞猜卡 →">全部竞猜卡 →</a></div>
+          <div class="wc-dash-head"><span class="ttl" data-en="Next match day · pick cards" data-zh="下一比赛日 · 全部竞猜卡">下一比赛日 · 全部竞猜卡</span><span class="wc-cards-meta" id="wc-cards-meta"></span><a class="lk" href="#predict" data-en="All cards →" data-zh="全部竞猜卡 →">全部竞猜卡 →</a></div>
           <div id="wc-dash-card-body"></div>
         </div>
       </div>
@@ -166,8 +166,8 @@
             <div class="wc-rule-hd"><span data-en="Single-match pick card" data-zh="单场竞猜卡">单场竞猜卡</span><span class="wc-rule-sub" data-en="every fixture · 7 markets" data-zh="每场比赛 · 7 个市场">每场比赛 · 7 个市场</span></div>
             <ul>
               <li><b data-en="1X2" data-zh="胜平负">胜平负</b><span data-en="home win / draw / away win" data-zh="主胜 · 平 · 客胜">主胜 · 平 · 客胜</span><i>+2</i></li>
-              <li><b data-en="Handicap" data-zh="让球">让球</b><span data-en="the result on the handicap line" data-zh="固定盘口下 主胜盘 / 走盘 / 客胜盘">固定盘口下 主胜盘 / 走盘 / 客胜盘</span><i>+4</i></li>
-              <li><b data-en="O/U 2.5" data-zh="大小 2.5">大小 2.5</b><span data-en="total goals over / under 2.5" data-zh="全场总进球大于 / 小于 2.5">全场总进球大于 / 小于 2.5</span><i>+2</i></li>
+              <li><b data-en="Handicap" data-zh="让球">让球</b><span data-en="pick a side on a fixed line — the line is sourced from multi-bookmaker odds, not set arbitrarily" data-zh="固定盘口下选边(主/走/客);盘口数字取自多方赔率核对，非随意设定">固定盘口下选边(主/走/客);盘口数字取自多方赔率核对，非随意设定</span><i>+4</i></li>
+              <li><b data-en="O/U 2.5" data-zh="大小 2.5">大小 2.5</b><span data-en="total goals over / under the line (dynamic line, defaults to 2.5)" data-zh="总进球高于 / 低于盘口线(动态线，默认 2.5)">总进球高于 / 低于盘口线(动态线，默认 2.5)</span><i>+2</i></li>
               <li><b data-en="BTTS" data-zh="双方进球">双方进球</b><span data-en="do both teams score" data-zh="两队是否都破门">两队是否都破门</span><i>+2</i></li>
               <li><b data-en="Odd / Even" data-zh="进球单双">进球单双</b><span data-en="total goals odd or even" data-zh="总进球数为单 / 双">总进球数为单 / 双</span><i>+1</i></li>
               <li><b data-en="HT / FT" data-zh="半全场">半全场</b><span data-en="half-time and full-time result" data-zh="半场与全场的胜负组合">半场与全场的胜负组合</span><i>+3</i></li>
@@ -178,7 +178,7 @@
             <div class="wc-rule-hd"><span data-en="Outright pool" data-zh="全局彩池">全局彩池</span><span class="wc-rule-sub" data-en="sealed before kickoff" data-zh="开赛前一次封盘">开赛前一次封盘</span></div>
             <ul>
               <li><b data-en="Champion" data-zh="夺冠">夺冠</b><span data-en="pick the winner" data-zh="押中最终冠军">押中最终冠军</span><i>+25</i></li>
-              <li><b data-en="Finalists" data-zh="进决赛">进决赛</b><span data-en="the 2 finalists · each" data-zh="两支决赛球队 · 每对">两支决赛球队 · 每对</span><i>+6</i></li>
+              <li><b data-en="Finalists" data-zh="进决赛">进决赛</b><span data-en="the 2 finalists · each" data-zh="两支决赛球队 · 每对">两支决赛球队 · 每对</span><i>+10</i></li>
               <li><b data-en="Semi-finalists" data-zh="四强">四强</b><span data-en="the 4 semi-finalists · each" data-zh="四支半决赛球队 · 每对">四支半决赛球队 · 每对</span><i>+4</i></li>
               <li><b data-en="Winning region" data-zh="夺冠大洲">夺冠大洲</b><span data-en="the champion's confederation" data-zh="冠军所属大洲">冠军所属大洲</span><i>+5</i></li>
               <li><b data-en="Total goals" data-zh="总进球">总进球</b><span data-en="all 104 matches · over / under" data-zh="全届 104 场总进球 · 大 / 小">全届 104 场总进球 · 大 / 小</span><i>+4</i></li>
@@ -239,6 +239,7 @@
         <div class="wc-foot">
           <span class="tag" data-en="World Cup 2026 · Prediction Desk" data-zh="世界杯 2026 · 预测专题">世界杯 2026 · 预测专题</span>
           <a class="top" href="#top" data-en="▴ Back to top" data-zh="▴ 回到顶部">▴ 回到顶部</a>
+          <a class="top" href="https://github.com/Zhenran-Wang/worldcup-arena-codebase" target="_blank" rel="noopener" data-en="Code ↗" data-zh="代码仓库 ↗">代码仓库 ↗</a>
         </div>
       </div>
     </section>
@@ -247,10 +248,10 @@
     </div>
   </div>
 
-  <script src="worldcup-app.js?v=20260611-0458-055017"></script>
-  <script src="worldcup-knockout.js?v=20260611-0458-055017"></script>
-  <script src="worldcup-arena.js?v=20260611-0458-055017"></script>
-  <script src="worldcup-data.js?v=20260611-0458-055017"></script>
-  <script src="worldcup-ui.js?v=20260611-0458-055017"></script>
+  <script src="worldcup-app.js?v=20260611-0458-064156"></script>
+  <script src="worldcup-knockout.js?v=20260611-0458-064156"></script>
+  <script src="worldcup-arena.js?v=20260611-0458-064156"></script>
+  <script src="worldcup-data.js?v=20260611-0458-064156"></script>
+  <script src="worldcup-ui.js?v=20260611-0458-064156"></script>
 </body>
 </html>
