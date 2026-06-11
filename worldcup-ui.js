@@ -696,7 +696,7 @@
         : "<span class='lk' title='" + (en ? "Not released yet" : "待产出") + "'>🔒</span>";
       return "<button type='button' class='wc-amrow" + (i === selMatch ? " sel" : "") + (rev ? "" : " locked") + "' data-i='" + i + "'>" +
         "<span class='no'>#" + (i + 1) + "</span>" +
-        "<span class='tt'><span class='s l'><span class='fl'>" + WC.fimg(f[2]) + "</span><span class='tn'>" + WC.nm(f[2]) + "</span></span><i>vs</i><span class='s r'><span class='tn'>" + WC.nm(f[3]) + "</span><span class='fl'>" + WC.fimg(f[3]) + "</span></span></span>" +
+        "<span class='tt'><span class='fl'>" + WC.fimg(f[2]) + "</span><span class='tn l'>" + WC.nm(f[2]) + "</span><i>vs</i><span class='tn r'>" + WC.nm(f[3]) + "</span><span class='fl'>" + WC.fimg(f[3]) + "</span></span>" +
         tail +
       "</button>";
     }).join("");

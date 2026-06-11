@@ -617,7 +617,7 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 .wc-gp-tbl td .tg { background: none; border: 0; padding: 0; }
 
 /* arena: picker + card */
-.wc-arena2 { display: grid; grid-template-columns: 300px 1fr; gap: 18px; align-items: start; }
+.wc-arena2 { display: grid; grid-template-columns: 350px 1fr; gap: 18px; align-items: start; }
 .wc-amlist { display: flex; flex-direction: column; max-height: 560px; overflow-y: auto; border: 1px solid var(--wc-line); border-radius: 14px; background: var(--wc-bg2); scrollbar-width: thin; }
 .wc-amrow { display: grid; grid-template-columns: 26px minmax(0,1fr) 52px; align-items: center; gap: 9px; padding: 11px 13px; border: 0; border-bottom: 1px solid var(--wc-line); background: none; cursor: pointer; font: inherit; color: inherit; text-align: left; transition: background 120ms; }
 .wc-amrow:last-child { border-bottom: 0; }
@@ -625,7 +625,7 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 .wc-amrow.sel { background: rgba(255,61,113,0.12); box-shadow: inset 3px 0 0 var(--wc-accent); }
 .wc-amrow .no { font-family: var(--wc-display); font-weight: 700; font-size: 11px; color: var(--wc-dim); width: 26px; }
 .wc-amrow.sel .no { color: var(--wc-accent); }
-.wc-amrow .tt { flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 7px; font-family: var(--wc-body); font-weight: 600; font-size: 12.5px; color: var(--wc-text); }
+.wc-amrow .tt { flex: 1; min-width: 0; display: grid; grid-template-columns: auto minmax(0,1fr) auto minmax(0,1fr) auto; align-items: center; gap: 6px; font-family: var(--wc-body); font-weight: 600; font-size: 12.5px; color: var(--wc-text); }
 .wc-amrow .tt .s { display: flex; align-items: center; gap: 5px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wc-amrow .tt .s.l { justify-content: flex-end; text-align: right; }
 .wc-amrow .tt .s.r { justify-content: flex-start; }
@@ -794,8 +794,7 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 /* 专题简介去掉 DEMO 视频后:文字单列、全宽(与下方 wc-stats / 正文左右对齐) */
 .wc-abstract { grid-template-columns: 1fr; }
 
-/* 模型擂台比赛列表:队名定宽(最多4字)+ 国旗 flex-none → 国旗锁同一列、全行对齐 */
-.wc-amrow .tt .s .fl { flex: none; }
-.wc-amrow .tt .s .tn { display: inline-block; width: 4.6em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.wc-amrow .tt .s.l .tn { text-align: right; }
-.wc-amrow .tt .s.r .tn { text-align: left; }
+/* 模型擂台比赛列表:国旗 grid 固定两端(对齐)+ 队名弹性宽(不定宽=不截断,中文4字/英文全名都显示) */
+.wc-amrow .tt .tn { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wc-amrow .tt .tn.l { text-align: right; padding-right: 3px; }
+.wc-amrow .tt .tn.r { text-align: left; padding-left: 3px; }
