@@ -2,7 +2,7 @@
    世界杯 2026 — 模型擂台（多市场竞猜 · 纯盘口玩法）
    单场 7 个市场（均由模型预测的【全场比分 + 半场比分】派生）：
      胜平负 x2 +1 / 让球 hc +2 / 大小2.5 ou +1 / 双方进球 bt +1 /
-     进球单双 oe +1 / 半全场 ht +3 / 正确比分 cs +5
+     进球单双 oe +1 / 半全场 ht +3 / 预测比分 cs +5（数据键仍叫"正确比分"）
    全局彩池（球队/赛果类，无球员）：
      夺冠 +10 / 进决赛(2队)每队 +3 / 四强(4队)每队 +2 /
      夺冠大洲 +2 / 总进球大小 +2 / 小组头名(12组)每组 +1
@@ -31,8 +31,8 @@
     { key: "ht", zh: "半全场（半场/全场）", en: "HT / FT result", pts: 3,
       zhExp: "一注同时猜「半场结果/全场结果」，如主/主＝半场主队领先且全场主队赢，两段都对才算中",
       enExp: "Call the half-time AND full-time result (e.g. H/H) — both legs must be right" },
-    { key: "cs", zh: "正确比分", en: "Correct score", pts: 2,
-      zhExp: "直接猜最终比分，和赛果一模一样才算中",
+    { key: "cs", zh: "预测比分", en: "Correct score", pts: 2,
+      zhExp: "直接预测最终比分，和赛果一模一样才算中",
       enExp: "Predict the exact final score — must match exactly" }
   ];
   var GLOBAL = [
