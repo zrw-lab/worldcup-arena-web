@@ -61,7 +61,8 @@
   }
   function femo(en) { return (T[en] && T[en][1]) || FIFA[en] || en; }
   function rate(en) { return (T[en] && T[en][2]) || 1780; }
-  function nm(en) { return LANG === "en" ? en : zh(en); }
+  var EN_SHORT = { "Bosnia & Herzegovina": "Bosnia" };   // 仅显示用:超长英文名缩短(T/ISO/FIFA/FIX 键不动)
+  function nm(en) { return LANG === "en" ? (EN_SHORT[en] || en) : zh(en); }
 
   // ---- Champion odds (illustrative model output) --------------------------
   // [en, title%, semis%, tierKey]
