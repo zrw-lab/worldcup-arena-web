@@ -793,3 +793,9 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 
 /* 专题简介去掉 DEMO 视频后:文字单列、全宽(与下方 wc-stats / 正文左右对齐) */
 .wc-abstract { grid-template-columns: 1fr; }
+
+/* 模型擂台比赛列表:队名定宽(最多4字)+ 国旗 flex-none → 国旗锁同一列、全行对齐 */
+.wc-amrow .tt .s .fl { flex: none; }
+.wc-amrow .tt .s .tn { display: inline-block; width: 4.6em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wc-amrow .tt .s.l .tn { text-align: right; }
+.wc-amrow .tt .s.r .tn { text-align: left; }
