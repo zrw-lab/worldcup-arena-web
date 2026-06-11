@@ -525,6 +525,8 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 
 /* ---- Overview dashboard ------------------------------------------------- */
 .wc-dash { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.wc-dash-note { font-family: var(--wc-body); font-size: 12.5px; line-height: 1.6; color: var(--wc-muted); margin: 16px 2px 0; }
+.wc-dash-note b { color: var(--wc-text); font-weight: 600; }
 .wc-dash-card { border: 1px solid var(--wc-line); border-radius: 16px; background: var(--wc-bg2); overflow: hidden; }
 .wc-dash-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--wc-line); }
 .wc-dash-head .ttl { font-family: var(--wc-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 14px; color: var(--wc-text); }

@@ -561,8 +561,10 @@
         var tms = idxs.map(function (i) { return WC.FIX[i][6]; }).filter(Boolean);
         var et = tms.length ? tms[0] + (tms.length > 1 ? "–" + tms[tms.length - 1] : "") : "";
         var bj = tms.length ? etToBJ(tms[0]).time + (tms.length > 1 ? "–" + etToBJ(tms[tms.length - 1]).time : "") : "";
+        var bjND = tms.length ? etToBJ(tms[0]).nextDay : false;             // 北京时间是否跨到次日(凌晨场)
+        var bjD = dp.mo + "月" + (dp.dd + (bjND ? 1 : 0)) + "日";           // 北京日期(凌晨场=美东日+1);跨天混合暂按起始场,不细分
         cmeta.textContent = en ? (WD_EN[wd] + " " + dp.mo + "/" + dp.dd + (et ? " · " + et + " ET" : ""))
-          : (dp.mo + "月" + dp.dd + "日 " + WD_ZH[wd] + (et ? " · " + et + " 美东 / " + bj + " 北京" : ""));
+          : (dp.mo + "月" + dp.dd + "日 " + WD_ZH[wd] + (et ? " · " + et + " 美东 / " + bj + " 北京" + bjD : ""));
       }
       renderDashCards(A, en, idxs);
     } else {
