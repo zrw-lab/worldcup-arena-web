@@ -1,6 +1,6 @@
 /* ==========================================================================
    世界杯 2026 — 真实预测数据接入（覆盖启发式 predict / poolPick）
-   数据批次:2026-06-11_0057(预测档案)
+   数据批次:2026-06-11_2146(预测档案)
    每次产出新一批预测：替换下面的 PRED 对象（保持同样结构）即可。
    ========================================================================== */
 (function () {
@@ -553,6 +553,13 @@
         return { x2: X2[m['胜平负']], hc: hc(m['让球']), ou: OU[m['大小2.5']], bt: BT[m['双方进球']], oe: oe(m['单双']), ht: htf(m['半全场']), cs: cs(m['正确比分']) };
       }
       return origPredict(home, away, mi, idx);
+    };
+
+    // 某场是否【真有】模型预测数据(任一模型在 PRED 里有该场即算真)。供 UI 判断"解锁/共识"是否基于真数据,
+    // 堵住"REVEAL_THROUGH 放出某场、但该场没真数据 → 把 origPredict 的伪比分当真展示"的隐患。
+    A.hasRealMatch = function (home, away) {
+      var key = WC.flag(home) + '_vs_' + WC.flag(away);
+      return A.MODELS.some(function (m) { var d = PRED[m.name]; return !!(d && d.matches && d.matches[key]); });
     };
 
     var origPool = A.poolPick;

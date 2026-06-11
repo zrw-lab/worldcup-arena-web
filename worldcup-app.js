@@ -64,8 +64,7 @@
   var EN_SHORT = { "Bosnia & Herzegovina": "Bosnia" };   // 仅显示用:超长英文名缩短(T/ISO/FIFA/FIX 键不动)
   function nm(en) { return LANG === "en" ? (EN_SHORT[en] || en) : zh(en); }
 
-  // ---- Champion odds (illustrative model output) --------------------------
-  // [en, title%, semis%, tierKey]
+  // 球队「夺冠概率/档位」基线(示意值,供球队信息面板 oddsOf/tierLabel 显示;非模型预测,不进积分榜)
   var ODDS = [
     ["Spain",15.2,35,"fav"], ["France",13.4,33,"fav"], ["Argentina",13.0,32,"holders"],
     ["Brazil",10.6,30,"t1"], ["England",9.8,29,"t1"], ["Portugal",7.0,24,"t2"],
@@ -177,8 +176,7 @@
       [["2 支球队","2 teams"],["1 场定冠军","1 match"],["MetLife 体育场","MetLife Stadium"],["季军赛 7.18","3rd place Jul 18"]]]
   ];
 
-  // ---- Models + prediction types ------------------------------------------
-  var MODELS = ["Claude","GPT-5","Gemini","DeepSeek","Qwen / 通义"];
+  // ---- Prediction types (真实 6 模型来自 worldcup-arena.js 的 __WC_ARENA.MODELS,这里不再另列) ----
   var TYPES = [
     {k:"score",  zh:"比分预测", en:"Scoreline"},
     {k:"result", zh:"胜平负",   en:"Result"},
@@ -198,35 +196,11 @@
   }
   function t(zhStr, enStr) { return LANG === "en" ? enStr : zhStr; }
 
-  // ---- Champion odds table render -----------------------------------------
-  var maxPct = ODDS[0][1];
-  function renderOdds() {
-    var body = document.getElementById("wc-odds-body");
-    if (!body) return;
-    var en = LANG === "en";
-    body.innerHTML = ODDS.map(function (r, i) {
-      var name = en ? r[0] : zh(r[0]);
-      var sub = en ? zh(r[0]) : r[0];
-      var tier = en ? TIER[r[3]].en : TIER[r[3]].zh;
-      var w = (r[1] / maxPct).toFixed(3);
-      var lead = i === 0 ? " class='lead'" : "";
-      var tierCls = r[3] === "holders" || r[3] === "fav" ? " holders" : "";
-      return "<tr" + lead + ">" +
-        "<td class='wc-rank'>" + (i + 1) + "</td>" +
-        "<td class='wc-team'><span class='nm'><span class='flag'>" + fimg(r[0]) + "</span>" + name + "</span>" +
-          "<span class='en'>" + sub + "</span></td>" +
-        "<td class='wc-pct'>" + r[1].toFixed(1) + "%</td>" +
-        "<td class='hide-sm'><div class='wc-bar'><i style='transform:scaleX(" + w + ")'></i></div></td>" +
-        "<td class='hide-sm'>" + r[2] + "%</td>" +
-        "<td class='wc-tier" + tierCls + "'>" + tier + "</td>" +
-      "</tr>";
-    }).join("");
-  }
 
   // expose for the second file
   window.__WC = {
-    T:T, zh:zh, flag:flag, fimg:fimg, femo:femo, rate:rate, nm:nm, ODDS:ODDS, FIX:FIX, DATE_EN:DATE_EN, DATE_ZH:DATE_ZH,
-    MODELS:MODELS, TYPES:TYPES, applyI18n:applyI18n, t:t, renderOdds:renderOdds,
+    T:T, zh:zh, flag:flag, fimg:fimg, femo:femo, rate:rate, nm:nm, FIX:FIX, DATE_EN:DATE_EN, DATE_ZH:DATE_ZH,
+    TYPES:TYPES, applyI18n:applyI18n, t:t,
     grp:grp, conf:conf, confLabel:confLabel, oddsOf:oddsOf, ratePct:ratePct, tierLabel:tierLabel,
     groups:groups, PHASES:PHASES,
     getLang:function(){return LANG;}, setLangVar:function(l){LANG=l;}

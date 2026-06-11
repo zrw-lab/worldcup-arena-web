@@ -384,10 +384,6 @@
   }
 
   /* --------------------------------------------------------- controls */
-  function fillModels() {
-    var sel = el("wc-model");
-    sel.innerHTML = WC.MODELS.map(function (m) { return "<option value=\"" + m + "\"" + (m === state.model ? " selected" : "") + ">" + m + "</option>"; }).join("");
-  }
   function renderTypeChips() {
     var host = el("wc-types"); var en = WC.getLang() === "en";
     host.innerHTML = WC.TYPES.map(function (x) {
@@ -533,13 +529,19 @@
         var bj = f[6] ? etToBJ(f[6]) : null;
         var bjd = bj ? (dp.mo + "月" + (dp.dd + (bj.nextDay ? 1 : 0)) + "日") : "";
         var t = f[6] ? (en ? f[6] + " ET" : f[6] + " 美东 / " + bj.time + " 北京" + bjd) : (en ? "TBD" : "待定");
-        var counts = { H: 0, D: 0, A: 0 };
-        A.MODELS.forEach(function (mo, mi) { counts[A.predict(f[2], f[3], mi, i).x2]++; });
-        var cons = "H"; if (counts.D > counts[cons]) cons = "D"; if (counts.A > counts[cons]) cons = "A";
-        var ci = A.LBL.x2[cons];
+        var predHTML;
+        if (!A.hasRealMatch || A.hasRealMatch(f[2], f[3])) {           // 有真数据才算共识,否则显示"待解锁"(不展示伪共识)
+          var counts = { H: 0, D: 0, A: 0 };
+          A.MODELS.forEach(function (mo, mi) { counts[A.predict(f[2], f[3], mi, i).x2]++; });
+          var cons = "H"; if (counts.D > counts[cons]) cons = "D"; if (counts.A > counts[cons]) cons = "A";
+          var ci = A.LBL.x2[cons];
+          predHTML = "<span class='pred pk pk-" + ci.t + "'>" + (en ? ci.en : ci.zh) + " " + counts[cons] + "/6</span>";
+        } else {
+          predHTML = "<span class='pred gp'>" + (en ? "Locked" : "待解锁") + "</span>";
+        }
         rows += "<div class='wc-dtoday-row' data-i='" + i + "'><span class='tm'>" + t + "</span>" +
           "<div class='ln'><span class='mt'><span class='s l'><span class='fl'>" + WC.fimg(f[2]) + "</span>" + WC.nm(f[2]) + "</span><i>vs</i><span class='s r'>" + WC.nm(f[3]) + "<span class='fl'>" + WC.fimg(f[3]) + "</span></span></span>" +
-          "<span class='pred pk pk-" + ci.t + "'>" + (en ? ci.en : ci.zh) + " " + counts[cons] + "/6</span></div></div>";
+          predHTML + "</div></div>";
       });
     } else {
       rows = (window.__WC_KO.KO || []).filter(function (m) { return m[2] === pickDay.dk; }).map(function (m) {
@@ -689,7 +691,10 @@
   function dkNum(dk) { var p = ("" + dk).split("."); return (+p[0]) * 100 + (+p[1]); }
   function isRevealed(i) {
     var A = window.__WC_ARENA; if (!A || !A.REVEAL_THROUGH) return true;
-    return dkNum(WC.FIX[i][0]) <= dkNum(A.REVEAL_THROUGH);
+    var f = WC.FIX[i];
+    // 必须【真有预测数据】才解锁——否则即便 REVEAL_THROUGH 放出了该场,也不把 origPredict 的伪比分当真展示
+    if (A.hasRealMatch && !A.hasRealMatch(f[2], f[3])) return false;
+    return dkNum(f[0]) <= dkNum(A.REVEAL_THROUGH);
   }
   function renderAmList(A, en, res) {
     var host = el("wc-amlist"); if (!host) return;
@@ -768,7 +773,6 @@
       b.classList.toggle("active", on); b.setAttribute("aria-pressed", on ? "true" : "false");
     });
     WC.applyI18n();
-    WC.renderOdds();
     renderTimeline();
     renderPhaseDetail();
     renderGroups();
