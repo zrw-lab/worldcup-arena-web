@@ -132,7 +132,7 @@ body.dark-theme.layout-pill .hero .btn.primary:hover { background: var(--wc-acce
 body.dark-theme.layout-pill .hero .btn:hover { transform: translateY(-2px); border-color: var(--wc-accent); }
 
 /* ---- Section scaffolding ------------------------------------------------- */
-.wc-wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+.wc-wrap { max-width: 1340px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
 .wc-section { padding: clamp(54px, 8vw, 96px) 0; position: relative; }
 .wc-section + .wc-section { border-top: 1px solid var(--wc-line); }
 
@@ -618,7 +618,7 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 
 /* arena: picker + card */
 .wc-arena2 { display: grid; grid-template-columns: 350px 1fr; gap: 18px; align-items: start; }
-.wc-amlist { display: flex; flex-direction: column; max-height: 560px; overflow-y: auto; border: 1px solid var(--wc-line); border-radius: 14px; background: var(--wc-bg2); scrollbar-width: thin; }
+.wc-amlist { display: flex; flex-direction: column; max-height: 810px; overflow-y: auto; border: 1px solid var(--wc-line); border-radius: 14px; background: var(--wc-bg2); scrollbar-width: thin; }
 .wc-amrow { display: grid; grid-template-columns: 26px minmax(0,1fr) 52px; align-items: center; gap: 9px; padding: 11px 13px; border: 0; border-bottom: 1px solid var(--wc-line); background: none; cursor: pointer; font: inherit; color: inherit; text-align: left; transition: background 120ms; }
 .wc-amrow:last-child { border-bottom: 0; }
 .wc-amrow:hover { background: rgba(255,255,255,0.03); }
@@ -664,7 +664,7 @@ body[data-lang="zh"] .wc-board .matchup { letter-spacing: 0.02em; }
 .wc-amc-hint { font-family: var(--wc-body); font-weight: 600; font-size: 11px; color: var(--wc-dim); margin-left: auto; }
 .wc-amc-scroll { overflow-x: auto; }
 .wc-amc-tbl { border-collapse: collapse; width: 100%; min-width: 540px; }
-.wc-amc-tbl th, .wc-amc-tbl td { padding: 11px 8px; text-align: center; border-bottom: 1px solid var(--wc-line); }
+.wc-amc-tbl th, .wc-amc-tbl td { padding: 10px 6px; text-align: center; border-bottom: 1px solid var(--wc-line); }
 .wc-amc-tbl tbody tr:last-child td { border-bottom: 0; }
 .wc-amc-tbl thead th { background: var(--wc-bg3); font-family: var(--wc-display); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--wc-muted); white-space: nowrap; }
 .wc-amc-tbl th.mk, .wc-amc-tbl td.mk { text-align: left; padding-left: 16px; white-space: nowrap; }
@@ -738,9 +738,10 @@ section:focus, main:focus, .wc-section:focus, .wc-section:focus-visible,
 
 
 /* 竞猜卡表格固定列宽——多张竞猜卡上下列对齐(原 table-layout:auto 列随内容变、对不齐) */
-.wc-amc-tbl { table-layout: fixed; min-width: 800px; }
-.wc-amc-tbl th.mk, .wc-amc-tbl td.mk { width: 212px; white-space: normal; }
-.wc-amc-tbl th.ac, .wc-amc-tbl td.ac { width: 84px; }
+.wc-amc-tbl { table-layout: fixed; min-width: 0; }
+.wc-amc-tbl th.mk, .wc-amc-tbl td.mk { width: 184px; white-space: normal; }
+.wc-amc-tbl th.ac, .wc-amc-tbl td.ac { width: 78px; }
+.wc-amc-tbl th:not(.mk):not(.ac), .wc-amc-tbl td:not(.mk):not(.ac) { width: 88px; }  /* 6 模型列定宽,不再撑成 140 */
 
 
 /* 叙述放宽宽度，和下面内容一致(原 72ch 换行太早) */
